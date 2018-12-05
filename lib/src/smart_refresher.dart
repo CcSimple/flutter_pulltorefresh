@@ -203,6 +203,11 @@ class _SmartRefresherState extends State<SmartRefresher> {
         }
       }
     } else if (overscrollPastEnd > 0) {
+      if(!widget.enableOverScroll) {
+        if(widget.onRefresh!=null){
+          widget.onRefresh(false);
+        }
+      }
       if (widget.footerConfig is RefreshConfig) {
           if (widget.onOffsetChange != null) {
             widget.onOffsetChange(false, overscrollPastEnd);
